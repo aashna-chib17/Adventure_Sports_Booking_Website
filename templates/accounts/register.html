@@ -1,0 +1,106 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="">
+      <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+      <meta name="generator" content="Jekyll v3.8.5">
+	<title>Sign Up</title>
+	
+	<link rel="stylesheet" href="{% static 'magic-master/dist/magic.css' %}">
+	<script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css"/>
+ 
+	
+</head>
+
+<body>
+	
+	
+
+
+
+	
+
+<div class="main">
+	<div width="40" >{% include 'accounts/alert.html' %} </div>
+	<ion-grid style="margin-top: 100px">
+	
+	<ion-row style="height: 500px">
+		<ion-col></ion-col>
+		<ion-col >
+				<ion-card padding style="height: 100%">
+					<center>
+					 <ion-card-header >
+    							<ion-card-subtitle >Welcome to ThrillScape</ion-card-subtitle>
+    							<ion-card-title class="magictime vanishIn">Sign Up</ion-card-title>
+    							<ion-list><ion-avatar class="magictime tinDownIn">
+                                    <img src="{% static 'img/avatar.png' %}">
+									</ion-avatar>
+									</ion-list>
+    							
+					  </ion-card-header>	
+					</center>
+					 <ion-card-content padding >
+						
+						
+					 
+
+					<form  method="POST">
+						{% csrf_token %}
+                     <ion-list class="magictime slideLeftReturn" >
+						<ion-item>
+							<ion-label position="floating"><ion-icon name="person"></ion-icon> Username</ion-label>
+							<ion-input name="username"  required type="text" ></ion-input>
+						</ion-item>
+					 	<ion-item>
+					 		<ion-label position="floating">
+								<ion-icon  name="mail"></ion-icon> Email</ion-label>
+					 		<ion-input  name="email" required type="email" ></ion-input>
+					 	</ion-item>
+					 	<ion-item>
+					 		<ion-label position="floating"><ion-icon name="md-lock"></ion-icon> Password</ion-label>
+					 		<ion-input required name="password" type="Password" ></ion-input>
+					 	</ion-item>
+					 						 	<ion-item>
+					 		<ion-label position="floating"><ion-icon name="md-lock"></ion-icon> Confirm Password</ion-label>
+					 		<ion-input required name="cpassword" type="password" ></ion-input>
+					 	</ion-item>
+					 	<ion-item >
+					 		<ion-label position="floating"><ion-icon name="call"></ion-icon> Phone Number</ion-label>
+					 		<ion-input required name="phone" type="numeric" ></ion-input>
+					 	</ion-item>
+
+					 </ion-list>
+					 	<ion-button type="submit"  class="magictime boingInUp" expand ="block" mode="ios" color="dark">Sign Up</ion-button>
+						 
+						 <ion-button   href="{% url 'login' %}" fill="outline" expand ="block" mode="ios" color="dark">Already Registered? Login</ion-button>
+ 
+						</form>
+	
+						</ion-card-content>
+				</ion-card>
+			</ion-col>
+
+			<ion-col>
+			</ion-col>
+			
+
+				
+			
+	</ion-row>
+
+	
+	
+</div>
+
+</body>
+
+
+
+
+</html>

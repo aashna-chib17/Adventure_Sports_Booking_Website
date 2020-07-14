@@ -1,0 +1,87 @@
+{% load static %}
+{% if user.is_authenticated %}
+  <header>
+    <div class="navbar">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark  ">
+  <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'img/Logo.png' %}" alt="Logo" style="width:40px;"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href= "{% url 'index' %}"><i class="fas fa-home"></i> Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="JavaScript:{document.getElementById('mybooking').submit()}"> <i class="fas fa-bookmark"></i> Your Bookings</a>
+        <form class="" action="{% url 'mybooking' %}" method="post" id = "mybooking">
+            {% csrf_token %}
+            <input type="hidden" value="{{ user.id }}" name="user" >
+        
+          </form>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="service.php">About Us</a>
+      </li>
+      
+    </ul>
+    <ul class="navbar-nav nav navbar-right">
+      
+<li class="nav-item"><a class="nav-link" href="#" ><i class="fa fa-user"></i> Welcome {{ user.username }} </a></li>
+<li class="nav-item mr-3">
+    <a href="JavaScript:{document.getElementById('logout').submit()}"
+    class="nav-link">
+    <i class="fas fa-sign-out-alt"></i>Logout
+
+  </a>
+  <form class="" action="{% url 'logout' %}" method="post" id = "logout">
+    {% csrf_token %}
+    <input type="hidden" >
+
+  </form>
+
+
+  </li>
+    
+      
+      
+    </ul>
+   
+  </div>
+</nav>
+</div>
+</header>
+
+  {% else %}
+	<header>
+        <div class="navbar">
+          <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark  ">
+      <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'img/Logo.png' %}" alt="Logo" style="width:40px;"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link " href="service.php">About Us</a>
+          </li>
+          
+        </ul>
+        <ul class="navbar-nav nav navbar-right">
+          
+        
+  
+        <li class ="nav-item"><a class="nav-link" href="{% url 'login' %}"><i class="fa fa-sign-in-alt" ></i>Login</button></a></li>
+          
+          
+        </ul>
+       
+      </div>
+    </nav>
+  </div>
+  </header>
+  {% endif %}

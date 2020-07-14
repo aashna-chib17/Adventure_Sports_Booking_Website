@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    
+    <p>hello</p>
+    <br>
+    {% include 'accounts/alert.html' %}
+    {% if bookings %}
+
+    
+    
+    {% for booking in bookings %}
+    <div class="card  m-2">
+        <div class="card-header text-center"><h3>{{booking.event_title}}</h3></div>
+        <div class="card-body p-5 m-2"><div class="row">
+            
+            <div class="col">
+                <h4>Tickets: {{booking.ticket}}
+                    <br>
+                    For : {{booking.date}}</h4>
+                    
+                
+    
+            </div>
+            <div class="col">
+                <form action="{% url 'delete' %}" method ="POST" >
+                    {% csrf_token %}
+                    <input type="hidden" name="event" value = "{{booking.id}}">
+                    <button class="btn btn-danger btn-block" type="submit" > Cancel</button>
+
+
+                </form>
+                
+                
+            </div>
+        </div></div>
+        </div>
+    
+    
+
+
+
+    {% endfor %}
+
+    
+
+    {% else %}
+    <div class="jumbotron text-center">
+        <h1>You have no Bookings</h1>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}
+    
